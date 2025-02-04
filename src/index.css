@@ -1,30 +1,249 @@
+@import-normalize;
+
+/* bring in normalize.css styles */
 :root {
-  --main-color: #ffffff;
-  --main-txt-color: #9b9faa;
-  --headline-txt-color: #212121;
-  --linear-color: #e0e0e0;
-  --active-color: #fc842d;
-  --calories-color: #264061;
-  --main-font: Roboto;
+  --primary-background-color: #ffffff;
+  --secondary-background-color: #e0e0e0;
+  --accent-bright-color: #fc842d;
+  --darkmode-background-color: #2a1d45;
+  --accent-dark-color: #9b9faa;
+
+  --primary-font-color: #9b9faa;
+  --secondary-font-dark: #212121;
+  --secondary-font-light: #ffffff;
+  --disabled-button-text: #9b9faa;
+  --font-weight-bold: 700;
+  --font-weight-light: 400;
+  --primary-font-size: 14px;
+
+  --transition-time: 2000ms;
+  --transition-time-function: ease-in-out;
+  --hover-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  /* --light-mode-box-shadow: 0 3px 6px rgba(250, 233, 167, 0.788), 0 3px 6px rgba(250, 233, 167, 0.788);
+  --dark-mode-box-shadow: 0 3px 6px #b2d1fa90, 0 3px 6px #b2d1fa90; */
+  /*   --transition-time-function: cubic-bezier(0.4, 0, 0.8, 0.5); */
+
 }
-* {
-  box-sizing: border-box;
-}
+
 body {
   margin: 0;
-  padding: 0;
-  outline: none;
-  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-ul,
-ol {
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* .active {
+  color: #212121;
+} */
+
+ul {
   list-style: none;
 }
-img {
-  display: block;
-}
+
 a {
   text-decoration: none;
+}
+
+.MuiButtonBase-root:hover {
+  background-color: transparent !important;
+}
+
+.MuiTouchRipple-root {
+  display: none;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  box-shadow: none;
+}
+
+.background {
+  width: 100%;
+  flex-grow: 1;
+  /* height: 100%; */
+  /* overflow-y: auto; */
+}
+
+/* .active {
+  color: var(--accent-bright-color);
+} */
+
+.footer-margin {
+  height: 45px;
+}
+
+@media screen and (min-width: 768px) {
+  .mainBackground {
+    background-image: url(./images/tablet-leaves.png),
+      url(./images/tablet-babana.png), url(./images/tablet-strawberry.png),
+      url(./images/tablet-shape.png);
+    background-position: right 300px top, right bottom, right center,
+      right bottom;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 746px 846px, 498px 450px, 286px 279px, 602px 816px;
+  }
+
+  .Calc-DairyBackground {
+    background-image: url(./images/tablet-dairy-leaves.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 418px 746px;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    .mainBackground {
+      background-image: url(./images/tablet-leaves@2x.png),
+        url(./images/tablet-babana@2x.png),
+        url(./images/tablet-strawberry@2x.png),
+        url(./images/tablet-shape@2x.png);
+      background-position: right 300px top, right bottom, right center,
+        right bottom;
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+      background-size: 746px 846px, 498px 450px, 286px 279px, 602px 816px;
+    }
+
+    .Calc-DairyBackground {
+      background-image: url(./images/tablet-dairy-leaves.png);
+      background-position: right bottom;
+      background-repeat: no-repeat;
+      background-size: 418px 746px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainBackground {
+    background-image: url(./images/desktop-leaves.png),
+      url(./images/desktop-banana.png), url(./images/desktop-strawberry.png),
+      url(./images/desktop-shape.png);
+    background-position: right 300px top, right top, right bottom, right bottom;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 746px 846px, 498px 450px, 286px 279px, 602px 816px;
+  }
+
+  .Calc-DairyBackground {
+    background-image: url(./images/desktop-diary-leaves.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 518px 846px;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    .mainBackground {
+      background-image: url(./images/desktop-leaves@2x.png),
+        url(./images/desktop-banana@2x.png),
+        url(./images/desktop-strawberry@2x.png),
+        url(./images/desktop-shape@2x.png);
+      background-position: right 300px top, right top, right bottom,
+        right bottom;
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+      background-size: 746px 846px, 498px 450px, 286px 279px, 602px 816px;
+    }
+  }
+
+  .Calc-DairyBackground {
+    background-image: url(./images/desktop-diary-leaves@2x.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 518px 846px;
+  }
+}
+
+/** The sections/ containers have the smallest padding for each view based on design. Add margin-top to your component if needed **/
+.top-bottom {
+  padding: 50px 20px 0 20px;
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .top-bottom {
+    padding: 100px 0 0px 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .top-bottom {
+    padding: 140px 0 0 0;
+  }
+}
+
+.no-bottom {
+  padding-top: 32px;
+}
+
+@media screen and (min-width: 1280px) {
+  .no-bottom {
+    padding-top: 140px;
+  }
+}
+
+.left-right {
+  margin: 0px auto;
+}
+
+@media screen and (min-width: 768px) {
+  .left-right {
+    max-width: 768px;
+    margin: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .left-right {
+    max-width: 1024px;
+    margin: 0 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .max-width {
+    max-width: 1280px;
+    margin: 0 auto;
+    /* Center the container horizontally on larger screens */
+  }
+}
+
+/* Custom styles for the error toast */
+.error-toast {
+  background-color: white;
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+}
+
+/* Custom styles for the success toast */
+.success-toast {
+  background-color: white;
+  border: 2px solid #66bb6a;
+  color: #66bb6a;
+
+}
+
+/* Custom styles for the info toast */
+.info-toast {
+  background-color: white;
+  border: 2px solid #6aa6b6;
+  color: #6aa6b6;
+
 }

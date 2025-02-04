@@ -1,0 +1,34 @@
+.textlogo-container {
+  margin-left: 8px;
+}
+
+.svgtext {
+  width: 38px;
+  height: 12px;
+}
+
+.svgtext:nth-child(2) {
+  margin-left: 5px;
+}
+
+@media screen and (min-width: 480px) {
+  .svgtext {
+    width: 45px;
+    height: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .svgtext {
+    width: 48px;
+    height: 18px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .textlogo-container {
+    margin-left: -10px;
+    width: 111px;
+    margin-top: 2px;
+  }
+}

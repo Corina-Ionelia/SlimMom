@@ -1,0 +1,34 @@
+.imagelogo-container {
+  width: 46px;
+  height: 44px;
+  z-index: 3px;
+}
+
+.imageLogo {
+  width: 46px;
+  height: 44px;
+}
+
+@media screen and (min-width: 480px) {
+  .imagelogo-container {
+    width: 66px;
+    height: 54px;
+  }
+
+  .imageLogo {
+    width: 56px;
+    height: 54px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .imagelogo-container {
+    width: 70px;
+    height: 66px;
+  }
+
+  .imageLogo {
+    width: 70px;
+    height: 66px;
+  }
+}

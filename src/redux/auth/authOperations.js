@@ -1,127 +1,61 @@
-import {
-  registerAuthRequest,
-  registerAuthSuccess,
-  registerAuthError,
-  loginAuthRequest,
-  loginAuthSuccess,
-  loginAuthError,
-  logoutAuthRequest,
-  logoutAuthSuccess,
-  logoutAuthError,
-  refreshAuthRequest,
-  refreshAuthSuccess,
-  getUserSuccess,
-} from "./authActions";
-import { apiBaseURL, register, login, logout, refresh } from "../../bk.json";
-import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+//external
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const notifyError = (message) =>
-  toast.error(message, {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+//internal
+import generateDefaultAvatarCode from 'redux/avatar/avatarOperations';
 
-axios.defaults.baseURL = apiBaseURL;
+axios.defaults.baseURL = 'https://slimmom-9d5b6b1b5aa9.herokuapp.com/api';
+// axios.defaults.baseURL = 'http://localhost:3030/api';
+
+axios.defaults.withCredentials = true;
 
 export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = "";
+    axios.defaults.headers.common.Authorization = '';
   },
 };
 
-export const authRegistration = (userData) => async (dispatch) => {
-  dispatch(registerAuthRequest());
-  await axios
-    .post(register, userData)
-    .then(({ data }) => dispatch(registerAuthSuccess(data)))
-    .then(() =>
-      dispatch(
-        authLogin({ email: userData.email, password: userData.password })
-      )
-    )
-    .catch((error) => {
-      if (
-        error.response.data.message.includes(
-          `User with ${userData.email} email already exists`
-        )
-      ) {
-        notifyError("Пользователь с таким email уже зарегистрирован");
-      }
-      dispatch(registerAuthError(error.response.data.message));
-    });
-};
+export const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, { dispatch, rejectWithValue }) => {
+    try {
+      const res = await axios.post('/auth/register', credentials);
+      dispatch(generateDefaultAvatarCode(credentials.email));
+      token.set(res.data.data.token);
+      return res.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-export const authLogin = (userData) => (dispatch) => {
-  dispatch(loginAuthRequest());
-  const { email, password } = userData;
-  axios
-    .post(login, {
-      email,
-      password,
-    })
-    .then(({ data }) => {
-      dispatch(loginAuthSuccess(data));
-      token.set(data.accessToken);
-    })
-    .catch((error) => {
-      if (
-        error.response.data.message.includes(
-          `User with ${email} email doesn't exist`
-        )
-      ) {
-        notifyError("Пользователь с таким email не зарегистрирован");
-      }
-      if (error.response.data.message.includes(`Password is wrong`)) {
-        notifyError("Неправильный пароль");
-      }
-      dispatch(loginAuthError(error.response.data.message));
-    });
-};
+export const login = createAsyncThunk(
+  'auth/login',
+  async (credentials, { dispatch, rejectWithValue }) => {
+    try {
+      const res = await axios.post('/auth/login', credentials);
+      dispatch(generateDefaultAvatarCode(credentials.email));
+      token.set(res.data.data.token);
+      return res.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-export const authLogout = () => (dispatch) => {
-  dispatch(logoutAuthRequest());
-
-  axios
-    .post(logout)
-    .then(() => {
-      token.unset();
-      return dispatch(logoutAuthSuccess());
-    })
-    .catch((error) => dispatch(logoutAuthError(error.response.data.message)));
-};
-
-export const authRefresh = () => (dispatch, getState) => {
-  const refreshToken = getState().authData.refreshToken;
-  const sid = getState().authData.sid;
-  dispatch(refreshAuthRequest());
-  token.set(refreshToken);
-  axios
-    .post(refresh, { sid })
-    .then(({ data }) => {
-      const {
-        newAccessToken: accessToken,
-        newRefreshToken: refreshToken,
-        sid,
-      } = data;
-      token.set(accessToken);
-      dispatch(
-        refreshAuthSuccess({
-          accessToken,
-          refreshToken,
-          sid,
-        })
-      );
-      axios.get("/user").then(({ data }) => dispatch(getUserSuccess(data)));
-    })
-    .catch(() => dispatch(logoutAuthSuccess()));
-};
+export const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.post('/auth/logout');
+      token.set(null);
+      return res.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
