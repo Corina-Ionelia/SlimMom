@@ -1,35 +1,29 @@
-import React from 'react';
-// import { Outlet } from 'react-router-dom';
-
-//import Section from 'components/Section/Section';
-import CaloriesCalc from 'components/CaloriesCalc/CaloriesCalc';
+import React, { Suspense } from 'react';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import Container from 'components/Container/Container';
-//import Container from 'components/Container/Container';
+import CaloriesCalc from 'components/CaloriesCalc/CaloriesCalc';
+import Loader from 'components/Loader/Loader';
+import Register from 'pages/Register/Register';
+import Login from 'pages/Login/Login';
 
-// import { lazy, Suspense } from 'react';
-// import Loader from 'components/Loader/Loader';
-// const Register = lazy(() => import('../Register/Register'));
-// const Login = lazy(() => import('../Login/Login'));
 function Home() {
-
   return (
-
-    <div className={`background mainBackground `}>
+    <div className="background mainBackground">
       <section className="top-bottom">
         <Container className="left-right">
           <CaloriesCalc />
-          {/* <Outlet /> */}
-          {/* <Suspense fallback={<Loader />}>
-              <Routes>
-                <Route path="register" element={<Register />} />
-                <Route path="login" element={<Login />} />
-              </Routes>
-            </Suspense> */}
+          <Outlet />
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="register" element={<Register />} />
+              <Route path="login" element={<Login />} />
+            </Routes>
+          </Suspense>
         </Container>
       </section>
-      <div className='footer-margin'></div>
+      <div className="footer-margin"></div>
     </div>
   );
-};
+}
 
 export default Home;

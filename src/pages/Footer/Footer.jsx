@@ -35,7 +35,7 @@ function Footer() {
           <Box className={`${s.iconContainer}`} style={{ padding: loggedIn ? '0 10px 3px 10px' : '8px 10px 3px 10px'}}>
             <Typography className={s.developerText}>Developed with
               <span className={s.iconSpace}>
-                <a href="https://github.com/gogonzogo/Final-Team-Project/blob/main/README.md" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Corina-Ionelia/SlimMom" target="_blank" rel="noopener noreferrer">
                   <CustomIcon className={`${s.icon}`}
                     iconName='heart' />
                   <span style={{ display: 'none' }}>
@@ -43,7 +43,7 @@ function Footer() {
                 </span>
                 </a>
               </span>
-              by the ScrumSquad © 2023 | All Rights Reserved
+              by the Corina © 2025 | All Rights Reserved
             </Typography>
           </Box>
         </Card>

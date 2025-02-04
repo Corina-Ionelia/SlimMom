@@ -13,7 +13,7 @@ const ImageLogo = () => {
         ? (<CustomIcon
               iconName ="slimMomDark"
               className={`${styles.imageLogo}`}
-              // width="24" height="24"
+              width="24" height="24"
               alt="A waistline with a green measuring tape"
             />
         ) : (
