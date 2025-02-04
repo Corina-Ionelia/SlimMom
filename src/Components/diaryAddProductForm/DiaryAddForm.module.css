@@ -1,0 +1,130 @@
+.addProductInputForm {
+  padding: 80px 0 60px 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.formFieldProduct {
+  width: 290px;
+  height: 26px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+
+  font-family: var(--main-font);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+}
+
+/* .formFieldProduct:after {
+  content: "";
+  width: 290px;
+  display: inline-block;
+  height: 1px;
+  bottom: -10px;
+  background-color: #9b9faa;
+} */
+
+.addProductInputLable:after {
+  content: "";
+  width: 290px;
+  display: inline-block;
+  height: 1px;
+  bottom: -10px;
+  background-color: var(--linear-color);
+}
+
+.addProductInputLable {
+  width: 290px;
+}
+
+.formFieldWeight {
+  margin-top: 30px;
+  width: 290px;
+  height: 26px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+
+  font-family: var(--main-font);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+}
+/* 
+.formFieldWeight:after {
+  content: "";
+  width: 290px;
+  display: inline-block;
+  height: 3px;
+  bottom: -10px;
+  background-color: #9b9faa;
+} */
+
+@media screen and (min-width: 768px) {
+  .addProductForm {
+    width: 376px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .addProductInputForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .formFieldWeight {
+    margin-top: 0;
+    width: 106px;
+  }
+  .btnAddFormMobile {
+    margin-left: 47px;
+  }
+
+  .addProductInputLable:nth-child(1) {
+    width: 240px;
+  }
+  .addProductInputLable:nth-child(3) {
+    width: 106px;
+    margin-left: 30px;
+  }
+
+  .addProductInputLable:nth-child(1):after {
+    width: 240px;
+  }
+
+  .addProductInputLable:nth-child(3):after {
+    width: 106px;
+  }
+}
+
+.button_wrapper {
+  width: 176px;
+  height: 44px;
+  /* display: flex;
+  align-items: center;
+  justify-self: center; */
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .addProductForm {
+    width: 376px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+    padding-right: 90px;
+  }
+}

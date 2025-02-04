@@ -1,0 +1,181 @@
+.form_wrapper {
+  font-family: var(--main-font);
+  padding: 40px 0 60px 0px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.form_title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--headline-txt-color);
+
+  margin-bottom: 30px;
+}
+
+.form {
+  text-align: center;
+}
+.inputs_box_first {
+  width: 240px;
+}
+.inputs_box_second {
+  width: 240px;
+}
+
+.input_box {
+  position: relative;
+}
+.input_box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none;
+  background: transparent;
+}
+.input_box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+
+  color: var(--main-txt-color);
+  pointer-events: none;
+  transition: 0.5s;
+}
+.input_box input:focus ~ label {
+  top: -20px;
+  left: 0;
+  color: var(--active-color);
+  font-size: 12px;
+}
+.not_empty ~ label {
+  top: -20px;
+  left: 0;
+  color: var(--active-color);
+  font-size: 12px;
+}
+
+.input_radio_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+  width: 240px;
+}
+
+.form_radio {
+  margin-bottom: 10px;
+}
+.form_radio_input {
+  display: none;
+}
+.form_radio_label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 0;
+  user-select: none;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+
+  color: var(--main-txt-color);
+}
+.form_radio_label:before {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  filter: grayscale(100%);
+  background: url(https://snipp.ru/img/radio-1.png) 0 0 no-repeat;
+}
+
+.form_radio_input:checked + .form_radio_label {
+  font-weight: 700;
+
+  color: var(--active-color);
+}
+.form_radio_input:checked + .form_radio_label:before {
+  filter: grayscale(0%);
+  background: url(https://snipp.ru/img/radio-2.png) 0 0 no-repeat;
+}
+
+/* Hover */
+.form_radio_label:hover,
+.form_radio_label:hover:before {
+  color: var(--active-color);
+  filter: brightness(120%);
+}
+
+.form p {
+  text-align: left;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+
+  margin: 0 0 10px 0;
+
+  color: var(--main-txt-color);
+}
+.formbtn {
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .form_wrapper {
+    padding: 100px 0 70px 0;
+    max-width: 605px;
+  }
+
+  .form_title {
+    font-size: 30px;
+    line-height: 36px;
+
+    margin-bottom: 60px;
+  }
+  .inputs_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .inputs_box_first {
+    margin-bottom: 60px;
+  }
+  .inputs_box_second {
+    padding-left: 30px;
+  }
+  .form {
+    width: 510px;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .form_wrapper {
+    margin: 0;
+    padding: 144px 0 0 0;
+    width: 605px;
+  }
+  .inputs_wrapper {
+    justify-content: flex-start;
+  }
+}

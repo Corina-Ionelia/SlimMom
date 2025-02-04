@@ -1,0 +1,26 @@
+.listPrivate {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+} ;

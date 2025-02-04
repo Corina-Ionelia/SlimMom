@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.arrowSvg {
+  width: 10px;
+  height: 10px;
+  fill: black;
+}
+.goBackBtn {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goBackBtn button {
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.rightContainer {
+  margin-left: auto;
+}
+
+.listSecondary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.itemUser {
+  text-decoration: none;
+  color: var(--headline-txt-color);
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.07;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  border: none;
+  background-color: unset;
+  color: var(--main-txt-color);
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.07;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.btn:hover,
+:focus {
+  color: var(--headline-txt-color);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.itemUser::after {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline;
+  transform: rotate(90deg);
+  content: "";
+  width: 32px;
+  border: 1px solid var(--linear-color);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+  }
+  .itemUser::after {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .listSecondary {
+    align-items: center;
+  }
+
+  .itemUser::after {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@import "../../../utils/vars.css";
