@@ -1,1 +1,0 @@
-Use for any bulky functions that you may want to seperate from your components

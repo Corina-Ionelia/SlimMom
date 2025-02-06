@@ -1,5 +1,5 @@
-import RegistrationForm from 'components/RegistrationForm/RegistrationForm'; // importăm formularul de înregistrare
-import Container from 'components/Container/Container'; // importăm containerul pentru layout
+import RegistrationForm from "components/RegistrationForm/RegistrationForm"; // importăm formularul de înregistrare
+import Container from "components/Container/Container"; // importăm containerul pentru layout
 
 function Register() {
   return (
