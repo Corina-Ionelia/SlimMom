@@ -48,13 +48,10 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint:js": "eslint src/**/*.{js,jsx}"
+        "lint:js": "eslint src/**/*.{js,jsx}",
+        "start:server": "node server.js",
+        "dev:server": "nodemon server.js"
     },
-    "scripts": {
-        "start": "node server.js",
-        "dev": "nodemon server.js"
-    }
-
     "eslintConfig": {
         "extends": [
             "react-app",
