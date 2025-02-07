@@ -32,7 +32,8 @@ export const App = () => {
         <Routes>
 
           {/** public routes */}
-          <Route path="/" element={<PublicRoute><Home /></PublicRoute>} />
+         <Route path="*" element={<Home />} />
+
           <Route path="register" element={<PublicRoute><Register /></PublicRoute>} />
           <Route path="login" element={<PublicRoute><Login /></PublicRoute>} />
 
