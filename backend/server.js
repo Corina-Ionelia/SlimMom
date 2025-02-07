@@ -10,6 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Suport pentru JSON
 
+// Servește fișierele statice din directorul public
+app.use(express.static('public'));
+
 app.get("/", (req, res) => {
     res.send("API-ul rulează!");
 });
