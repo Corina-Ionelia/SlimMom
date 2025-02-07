@@ -1,38 +1,32 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
+const dotenv = require("dotenv");
+
+dotenv.config(); // Încarcă variabilele de mediu din .env
 
 const app = express();
 
-// Middleware CORS extins
-app.use(
-    cors({
-        origin: "http://localhost:3000", // Frontend-ul tău
-        credentials: true, // Permite cookie-uri/token
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Metode permise
-        allowedHeaders: ["Content-Type", "Authorization"], // Headere permise
-    })
-);
+// Middleware pentru a permite CORS
+app.use(cors());
+app.use(express.json()); // Suport pentru JSON
 
-// Tratează cererile OPTIONS (preflight)
-app.options("*", cors());
-
-// Middleware pentru parsare JSON
-app.use(express.json());
-
-// Conectare la MongoDB
-mongoose
-    .connect(process.env.MONGODB_URI)
-    .then(() => console.log("✅ Conectat la MongoDB"))
-    .catch((err) => console.error("❌ Eroare MongoDB:", err));
-
-// Rute
-const authRoutes = require("./routes/authRoutes");
-app.use("/api/auth", authRoutes);
-
-// Pornire server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`🚀 Server rulează pe portul ${PORT}`);
+app.get("/", (req, res) => {
+    res.send("API-ul rulează!");
 });
+
+// Adaugă rutele API-ului tău aici
+app.post("/api/user/dailyRate", (req, res) => {
+    const { weight, height, age } = req.body;
+
+    if (!weight || !height || !age) {
+        return res.status(400).json({ message: "Toate câmpurile sunt obligatorii" });
+    }
+
+    const dailyCalories = 10 * weight + 6.25 * height - 5 * age + 5;
+
+    res.json({ dailyCalories });
+});
+
+// Setează portul pentru Heroku
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
