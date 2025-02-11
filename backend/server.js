@@ -1,35 +1,41 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-
-dotenv.config(); // Încarcă variabilele de mediu din .env
-
+const express = require('express');
+const cors = require('cors');
 const app = express();
+const port = 3001;
 
-// Middleware pentru a permite CORS
+// Middleware pentru cereri JSON și CORS
+app.use(express.json());
 app.use(cors());
-app.use(express.json()); // Suport pentru JSON
 
-// Servește fișierele statice din directorul public
-app.use(express.static('public'));
-
-app.get("/", (req, res) => {
-    res.send("API-ul rulează!");
-});
-
-// Adaugă rutele API-ului tău aici
-app.post("/api/user/dailyRate", (req, res) => {
-    const { weight, height, age } = req.body;
-
-    if (!weight || !height || !age) {
-        return res.status(400).json({ message: "Toate câmpurile sunt obligatorii" });
+// endpoint login
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+    // verificare a utilizatorului
+    if (username && password) {
+        res.json({ message: 'Login successful' });
+    } else {
+        res.status(401).json({ message: 'Invalid credentials' });
     }
-
-    const dailyCalories = 10 * weight + 6.25 * height - 5 * age + 5;
-
-    res.json({ dailyCalories });
 });
 
-// Setează portul pentru Heroku
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// endpoint inregistrare
+app.post('/api/register', (req, res) => {
+    const { username, email, password } = req.body;
+    // inregistrare a utilizatorului
+    if (username && email && password) {
+        res.json({ message: 'Registration successful' });
+    } else {
+        res.status(400).json({ message: 'Invalid data' });
+    }
+});
+
+app.post('/api/diary', (req, res) => {
+    const { userId, entry } = req.body;
+
+    // adaugare a unei intrari in jurnal
+    res.json({ message: 'Diary entry saved' });
+});
+
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
