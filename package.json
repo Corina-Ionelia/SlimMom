@@ -2,7 +2,7 @@
     "name": "slimmom",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://gogonzogo.github.io/Slimmom/",
+    "homepage": "https://corina-ionelia.github.io/SlimMom",
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
